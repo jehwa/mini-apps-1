@@ -22,11 +22,13 @@ var app = {
         if(app.pick === 'done') {
             app.clear();
         }
-        node.html(app.choice[app.pick]); //change td value
-        var x = Number(node.attr('id')[0]);
-        var y = Number(node.attr('id')[1]);
-        app.board[x][y] = app.choice[app.pick];// change app.board value
-        // console.log(app.board);
+        if(!node[0].innerHTML.length) {
+            node.html(app.choice[app.pick]); //change td value
+            var x = Number(node.attr('id')[0]);
+            var y = Number(node.attr('id')[1]);
+            app.board[x][y] = app.choice[app.pick];// change app.board value
+            // console.log(app.board);           
+        }
         if(app.checkRow(x) || app.checkCol(y) || app.checkMaj(x+y) || app.checkMin(x-y)) {
             alert(`${app.choice[app.pick]} won!!`);
             app.pick = 'done';
