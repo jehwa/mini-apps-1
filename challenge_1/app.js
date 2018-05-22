@@ -7,6 +7,10 @@ var app = {
         false: 'O',
         done: ''
     },
+    winner: {
+        true: 0,
+        false: 0
+    },
     pick: true,
 
     init: () => {
@@ -31,8 +35,9 @@ var app = {
         }
         if(app.checkRow(x) || app.checkCol(y) || app.checkMaj(x+y) || app.checkMin(x-y)) {
             alert(`${app.choice[app.pick]} won!!`);
+            app.winner[app.pick] ++;
+            $('.' + app.pick).text(app.winner[app.pick]);
             app.pick = 'done';
-            console.log(app.pick);
             return;
         }
         if(app.pick !== 'done') {
