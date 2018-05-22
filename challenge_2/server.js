@@ -12,9 +12,9 @@ app.get('/', (req, res) => {
 });
 app.post('/data', (req, res) => {
     
-    let data = req.body;
-    console.log(converter(data), 'csvDATA==================');
-    res.send('post request done');
+    let data = converter(req.body);
+    console.log(data, 'csvDATA==================');
+    res.send(data);
 })
 
 let converter = function(obj) {
@@ -38,7 +38,7 @@ let converter = function(obj) {
         if(wholeData[i] === '\n' || wholeData[i+1] === '\n') {
             output += wholeData[i];
         } else {
-            output += wholeData[i] + ',';
+            output += wholeData[i] + ', ';
         }
     }
     return output;

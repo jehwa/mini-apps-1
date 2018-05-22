@@ -11,7 +11,15 @@ let App = {
             type: "POST",
             url: "http://localhost:3000/data",
             data: data,
-            contentType: 'application/json'
+            contentType: "application/json",
+            dataType: "text",
+            success: (data) => {
+                var output = data.split('\n');
+                output.forEach(function(ele) {
+                    $('.csv').append(`<p> ${ele} </p>`);
+                })
+            }
+            // $('.csv').append(data),
         })
         // console.log($('textarea').val());
         // console.log('hi');
