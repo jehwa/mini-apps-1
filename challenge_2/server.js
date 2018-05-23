@@ -13,7 +13,7 @@ app.get('/', (req, res) => {
 app.post('/data', (req, res) => {
     
     let data = converter(req.body);
-    console.log(data, 'csvDATA==================');
+    // console.log(data, 'csvDATA==================');
     res.send(data);
 })
 
